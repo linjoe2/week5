@@ -100,13 +100,14 @@ it will console logs 'b'
 convertMouseCoordinatesToGeoCoordinates is a function that starts but is outside this script, it sends back the mouse cordonats
 console logs 'c'
 get request for the map with the coordinates of the mouse
-console logs 'd'
 consolelog 'E' because respose takes longer
+console logs 'd'
 sends a response with a updated map
 
 
+
 - 2b. In what order is `A` through `F` printed?
-afbcde
+afbced
 
 - 2c. Describe the events that happen between each letter. When does the server get hit?
 ​between f and b
