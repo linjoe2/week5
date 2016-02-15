@@ -1,0 +1,22 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(type='stylesheet', href='http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css')
+    script(src='http://code.jquery.com/jquery-1.10.2.js')
+    script(type='text/javascript', src='http://code.jquery.com/ui/1.11.4/jquery-ui.js')
+  body
+  body
+    div#mainmenu
+     ul
+      li: a(href='/') home
+      li: a(href='/addmessage') Add message
+      li: a(href='/messages') read all messaages
+
+    ul#usrmenu
+     li: a(href="register") register
+     li: a(href="login") login
+
+    div#content
+     block content

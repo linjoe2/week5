@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  div(class='allusrs')
+  script.
+    function addlist() {
+     $.get("/messages", function (response) { 
+     console.log('test')
+      $('.allusrs').append("<p>" + response + "</p>");
+      });
+     }
+     addlist()
+  p ---------
+
+
