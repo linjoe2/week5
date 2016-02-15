@@ -1,0 +1,63 @@
+html
+  head
+    title User Information app
+    link(type='stylesheet', href='http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css')
+    script(src='http://code.jquery.com/jquery-1.10.2.js')
+    script(type='text/javascript', src='http://code.jquery.com/ui/1.11.4/jquery-ui.js')
+  body
+
+
+    h1 All users
+    div(class='allusrs')
+      script.
+          function addlist() {
+            $.get("/allusers", function (response) { 
+              $('.allusrs').append("<p>" + response + "</p>");
+          });
+          }
+          addlist()
+
+    h1 Add User
+    form(action='http://localhost:3000/addRequest', method='post')
+      input(type='text', name='firstName', placeholder='your name')
+      input(type='text', name='lastName', placeholder='your last name')
+      input(type='text', name='email', placeholder='your Email adress')
+      br
+      button(type='submit') Submit
+
+    h1 Search
+      form
+        input#name2(type="text" placeholder="who are you looking for?")
+        input#searchButton(type="button" value="search")
+
+    div(class='found')
+
+script.
+       $("#searchButton").click(function() {
+          $('.found').html('');
+          var Name = {
+            name: $("#name2").val()
+          };
+          $.post("/searchRequest2", Name, function(response, textStatus) {
+            $('.found').append("<p>"  + response + "</p>");
+          });
+        });
+
+script.
+  $(document).ready(function() {
+      var time = 0;
+      var lasttime = 0;
+      $("#name2").keyup(function() {
+        time = Date.now()
+        if (time - lasttime > 300 || time === 0) {
+          lasttime = time;
+          $('.found').html('');
+          var Name = {
+            name: $("#name2").val()
+          };
+          $.post("/searchRequest2", Name, function(response, textStatus) {
+            $('.found').append("<p>" + response + "</p>");
+          });
+        }
+      })
+    })

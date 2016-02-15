@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  form(action='http://localhost:3000/addmessage1', method='post')
+      input(type='text', name='Name', placeholder='your name')
+      input(type='text', name='Email', placeholder='your Email adress')
+      br
+      textarea(type='text', name='Message', placeholder='your message', row='5')
+      br
+      button(type='submit') Submit
