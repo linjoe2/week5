@@ -10,20 +10,46 @@ html
   body
   body
    
-    div#mainmenu
+   div#mainmenu
      ul
       li: a(href='/') home
       li: a(href='/post/new') Add message
       li: a(href='/post') read all messages
 
-    div#usrmenu
-     form(action='http://localhost:3000/users/login', method='post')
-      div#form-group       
-       input(class="form-control" type='text', name='username', placeholder='username')
-       br
-       input(class="form-control" type='password', name='password', placeholder='password')
-       button(class='btn btn-default' type='submit') submit
-       a(class='btn btn-default' type="link" href="/users/new") register
+   div#usrmenu
+    form
+     div#form-group 
+      input(type='text', id='username', placeholder='username')
+      input(type='password', id='password', placeholder='password')
+      br
+      button(type='submit' id='submit') submit
+      a(class='button', href='http://localhost:3000/users/new') register
+  
+  script(type='text/javascript').
+   $(document).ready(function(){
+    var user;
+    var pass;
+    $("#submit").click(function(){
+      user=$("#username").val();
+      pass=$("#password").val();
+      console.log(user + pass)
+      /*
+      * Perform some validation here.
+      */
+      $.post("http://localhost:3000/users/login",{user:user,pass:pass},function(data){        
+       if(data==='done') {
+        window.location.href="/post";
+         }
+       });
+      });
+     });
 
-    div#content
+
+
+
+
+
+
+
+ div#content
      block content
