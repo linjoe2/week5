@@ -6,7 +6,7 @@ block content
   div(class='allmsg')
       script.
           function addlist() {
-            $.get("/message", function (response) { 
+            $.get("/message-usr", function (response) { 
               $('.allmsg').append("<p>" + response + "</p>");
           });
           }
